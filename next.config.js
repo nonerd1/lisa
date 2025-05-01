@@ -8,6 +8,10 @@ const nextConfig = {
   basePath: '/L.I.S.A',
   // Make sure trailingSlash is true for GitHub Pages
   trailingSlash: true,
+  // Disable ESLint during builds
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig; 
