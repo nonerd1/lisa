@@ -5,7 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   // GitHub Pages deployment - update if your repo name is different
-  // basePath: process.env.NODE_ENV === 'production' ? '/repository-name' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/L.I.S.A' : '',
 };
 
 module.exports = nextConfig; 
