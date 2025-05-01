@@ -19,8 +19,36 @@ function Model({ modelPath }: ModelProps) {
   const fullModelPath = publicRuntimeConfig?.basePath 
     ? `${publicRuntimeConfig.basePath}${modelPath}`
     : modelPath;
+  
+  // Log the path for debugging
+  console.log('Loading model from:', fullModelPath);
     
-  const geometry = useLoader(STLLoader, fullModelPath);
+  const [error, setError] = useState<boolean>(false);
+  const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
+  
+  // Load the STL file
+  useEffect(() => {
+    const loader = new STLLoader();
+    
+    // Clear previous errors
+    setError(false);
+    
+    loader.load(
+      fullModelPath,
+      (loadedGeometry) => {
+        console.log('Model loaded successfully');
+        setGeometry(loadedGeometry);
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+      },
+      () => {
+        console.error('Error loading model:', fullModelPath);
+        setError(true);
+      }
+    );
+  }, [fullModelPath]);
+  
   const model = useRef<THREE.Mesh>(null);
 
   useEffect(() => {
@@ -44,6 +72,24 @@ function Model({ modelPath }: ModelProps) {
       model.current.rotation.y = state.clock.getElapsedTime() * 0.1;
     }
   });
+  
+  if (error) {
+    return (
+      <mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#ff0000" wireframe />
+      </mesh>
+    );
+  }
+  
+  if (!geometry) {
+    return (
+      <mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#666666" wireframe />
+      </mesh>
+    );
+  }
 
   return (
     <mesh ref={model} geometry={geometry}>
@@ -66,6 +112,25 @@ function ModelLoadingFallback() {
 }
 
 export default function ModelViewer({ modelPath }: ModelProps) {
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    // Simulate a loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
+  if (isLoading) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-[#252525]">
+        <div className="text-white">Loading 3D model...</div>
+      </div>
+    );
+  }
+  
   return (
     <div className="w-full h-full">
       <Canvas

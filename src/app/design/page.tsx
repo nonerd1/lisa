@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import NextImage from "@/components/ui/next-image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -48,35 +48,35 @@ const designIterations = [
     id: 2,
     title: "First CAD Model",
     description: "First 3D model in Fusion360. We quickly realized the rack and pinion would be too heavy.",
-    image: "/media/design-sketch.jpg",
+    image: "/media/First_CAD_Model.png",
     date: "October 2022",
   },
   {
     id: 3,
     title: "Prototype v1",
     description: "First 3D printed prototype. Failed due to insufficient wall thickness and weak attachment points.",
-    image: "/media/design-prototype-1.jpg",
+    image: "/media/Prototype_v1.png",
     date: "November 2022",
   },
   {
     id: 4,
     title: "Linear Actuator Integration",
     description: "Switched to linear actuators for extension mechanism. Required significant redesign of the arm structure.",
-    image: "/media/design-integration.jpg",
+    image: "/media/Linear_Actuator_Integration.png",
     date: "December 2022",
   },
   {
     id: 5,
     title: "Prototype v2",
     description: "Second prototype with reinforced joints and actuator mounting points. Material thickness increased.",
-    image: "/media/design-prototype-2.jpg",
+    image: "/media/Prototype_v2.png",
     date: "January 2023",
   },
   {
     id: 6,
     title: "Prototype v3",
     description: "Third prototype added guide rails to prevent arm wobble when extended. Much more stable.",
-    image: "/media/design-prototype-3.jpg",
+    image: "/media/Prototype_v3.JPG",
     date: "February 2023",
   },
   {
@@ -90,7 +90,7 @@ const designIterations = [
     id: 8,
     title: "Final Arm Design",
     description: "Final arm design with optimized weight, proper actuator housing, and reinforced extension rails.",
-    image: "/media/design-sketch.jpg",
+    image: "/media/Final_Arm_Design.png",
     date: "March 2023",
   },
   {
@@ -130,7 +130,7 @@ export default function Design() {
       description: "This is the 3D model of our motor mount design. The mount was designed to integrate seamlessly with the telescopic arm system while providing stable support for the motors."
     },
     "motor-head": {
-      path: "/models/Motor_Mount_Design.stl", // Fallback to the same model if the other doesn't exist
+      path: "/models/MotorHead_Website.stl",
       title: "Motor Head Design",
       description: "This is the detailed 3D model of our motor head component. The motor head connects to the mount and houses the actual motor, with optimized airflow and weight distribution."
     }
@@ -223,13 +223,12 @@ export default function Design() {
                   onClick={() => setSelectedImage(design.id)}
                 >
                   <div className="relative h-48 sm:h-64">
-                    <Image
-                      src={resolvePath(design.image)}
+                    <NextImage
+                      src={design.image}
                       alt={design.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover"
-                      unoptimized
                     />
                   </div>
                   <div className="p-4">
@@ -261,12 +260,11 @@ export default function Design() {
             </button>
             <div className="relative h-[70vh]">
               {selectedImage && (
-                <Image
-                  src={resolvePath(designIterations.find(d => d.id === selectedImage)?.image || "/media/placeholder-image.svg")}
+                <NextImage
+                  src={designIterations.find(d => d.id === selectedImage)?.image || "/media/placeholder-image.svg"}
                   alt={designIterations.find(d => d.id === selectedImage)?.title || "Design image"}
                   fill
                   className="object-contain"
-                  unoptimized
                 />
               )}
             </div>
