@@ -4,8 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // GitHub Pages deployment - update if your repo name is different
-  basePath: process.env.NODE_ENV === 'production' ? '/L.I.S.A' : '',
+  // GitHub Pages deployment with correct basePath
+  basePath: '/L.I.S.A',
+  // Make sure trailingSlash is true for GitHub Pages
+  trailingSlash: true,
 };
 
 module.exports = nextConfig; 
