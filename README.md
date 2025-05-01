@@ -1,8 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# L.I.S.A. Drone Project Website
 
-## Getting Started
+This is the project portfolio website for L.I.S.A. - a quadcopter whose 3-D-printed arms telescope in flight.
 
-First, run the development server:
+## 🚀 Features
+
+- Modern, responsive design built with Next.js 14 and Tailwind CSS
+- Interactive 3D model viewer using Three.js
+- Animation effects with Framer Motion
+- Comprehensive project documentation and resources
+- Optimized for performance and SEO
+
+## 📋 Pages
+
+- **Home**: Hero section with video background and project overview
+- **Overview**: High-level project pitch with specs and timeline
+- **Hardware**: Detailed bill of materials and component information
+- **Software**: Architecture diagrams and code snippets
+- **Design**: Gallery of design iterations and 3D model viewer
+- **Testing**: Flight test videos and performance data
+- **Team**: Meet the team behind the project
+- **Resources**: Download project files and documentation
+- **Contact**: Get in touch with the team
+
+## 🛠️ Technologies Used
+
+- **Next.js 14**: React framework with app router
+- **TypeScript**: Typed JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **shadcn/ui**: Reusable UI components
+- **Framer Motion**: Animation library
+- **Three.js (@react-three/fiber)**: 3D rendering
+- **Mermaid**: Diagrams as code
+
+## 🏗️ Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/lisa-drone-website.git
+   cd lisa-drone-website
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. Create necessary directories:
+   ```bash
+   mkdir -p public/models public/media public/files
+   ```
+
+4. Add your media files:
+   - Put arm model at `/public/models/extendable_arm.glb`
+   - Add images, videos, and other media to `/public/media/`
+   - Add downloadable files to `/public/files/`
+
+## 🚀 Development
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +69,37 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+```
 
-## Learn More
+## 🚢 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This site is configured for deployment on Vercel. To deploy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a Vercel account if you don't have one
+2. Install the Vercel CLI: `npm i -g vercel`
+3. Run: `vercel` to deploy to a preview URL
+4. Run: `vercel --prod` to deploy to production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Alternatively, connect your GitHub repository to Vercel for automatic deployments.
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is released under the MIT License. See the LICENSE file for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🙏 Acknowledgments
+
+- Initial project concept and design by the L.I.S.A. team
+- 3D modeling and mechanical design thanks to our engineering team
+- Special thanks to all contributors and advisors
