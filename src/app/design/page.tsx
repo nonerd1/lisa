@@ -5,7 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import React from "react";
 import ModelViewer from "@/components/three/model-viewer";
+import { resolvePath } from "@/utils/path-utils";
 
 // IMPORTANT INSTRUCTIONS:
 // 1. Move these files from your Downloads folder to public/media in the project:
@@ -39,42 +41,42 @@ const designIterations = [
     id: 1,
     title: "Initial Concept Sketch",
     description: "First conceptual drawing of telescopic mechanism. The idea was to use a rack and pinion system initially.",
-    image: "/media/placeholder-image.svg",
+    image: "/media/design-sketch.jpg",
     date: "September 2022",
   },
   {
     id: 2,
     title: "First CAD Model",
     description: "First 3D model in Fusion360. We quickly realized the rack and pinion would be too heavy.",
-    image: "/media/First_CAD_Model.png",
+    image: "/media/design-sketch.jpg",
     date: "October 2022",
   },
   {
     id: 3,
     title: "Prototype v1",
     description: "First 3D printed prototype. Failed due to insufficient wall thickness and weak attachment points.",
-    image: "/media/Prototype_v1.png",
+    image: "/media/design-prototype-1.jpg",
     date: "November 2022",
   },
   {
     id: 4,
     title: "Linear Actuator Integration",
     description: "Switched to linear actuators for extension mechanism. Required significant redesign of the arm structure.",
-    image: "/media/Linear_Actuator_Integration.png",
+    image: "/media/design-integration.jpg",
     date: "December 2022",
   },
   {
     id: 5,
     title: "Prototype v2",
     description: "Second prototype with reinforced joints and actuator mounting points. Material thickness increased.",
-    image: "/media/Prototype_v2.png",
+    image: "/media/design-prototype-2.jpg",
     date: "January 2023",
   },
   {
     id: 6,
     title: "Prototype v3",
     description: "Third prototype added guide rails to prevent arm wobble when extended. Much more stable.",
-    image: "/media/Prototype_v3.JPG",
+    image: "/media/design-prototype-3.jpg",
     date: "February 2023",
   },
   {
@@ -88,14 +90,14 @@ const designIterations = [
     id: 8,
     title: "Final Arm Design",
     description: "Final arm design with optimized weight, proper actuator housing, and reinforced extension rails.",
-    image: "/media/Final_Arm_Design.png",
+    image: "/media/design-sketch.jpg",
     date: "March 2023",
   },
   {
     id: 9,
     title: "Integration Testing",
     description: "Testing the fully integrated arm with electronics. Some issues with wire routing were identified and fixed.",
-    image: "/media/placeholder-image.svg",
+    image: "/media/design-integration.jpg",
     date: "April 2023",
   },
 ];
@@ -128,7 +130,7 @@ export default function Design() {
       description: "This is the 3D model of our motor mount design. The mount was designed to integrate seamlessly with the telescopic arm system while providing stable support for the motors."
     },
     "motor-head": {
-      path: "/models/MotorHead_Website.stl",
+      path: "/models/Motor_Mount_Design.stl", // Fallback to the same model if the other doesn't exist
       title: "Motor Head Design",
       description: "This is the detailed 3D model of our motor head component. The motor head connects to the mount and houses the actual motor, with optimized airflow and weight distribution."
     }
@@ -179,7 +181,10 @@ export default function Design() {
             
             <div className="bg-[#252525] rounded-b-2xl overflow-hidden shadow-lg">
               <div className="h-[500px]">
-                <ModelViewer modelPath={models[currentModel].path} />
+                {/* Use try/catch to handle potential errors */}
+                <ErrorBoundary>
+                  <ModelViewer modelPath={models[currentModel].path} />
+                </ErrorBoundary>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{models[currentModel].title} - 3D Model</h3>
@@ -219,11 +224,12 @@ export default function Design() {
                 >
                   <div className="relative h-48 sm:h-64">
                     <Image
-                      src={design.image}
+                      src={resolvePath(design.image)}
                       alt={design.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover"
+                      unoptimized
                     />
                   </div>
                   <div className="p-4">
@@ -249,24 +255,25 @@ export default function Design() {
               className="absolute top-4 right-4 text-white bg-black/50 w-10 h-10 rounded-full flex items-center justify-center z-10"
               onClick={() => setSelectedImage(null)}
             >
-              ✕
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
             <div className="relative h-[70vh]">
-              <Image
-                src={designIterations.find(d => d.id === selectedImage)?.image || ""}
-                alt={designIterations.find(d => d.id === selectedImage)?.title || ""}
-                fill
-                sizes="100vw"
-                className="object-contain"
-              />
+              {selectedImage && (
+                <Image
+                  src={resolvePath(designIterations.find(d => d.id === selectedImage)?.image || "/media/placeholder-image.svg")}
+                  alt={designIterations.find(d => d.id === selectedImage)?.title || "Design image"}
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
+              )}
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">
                 {designIterations.find(d => d.id === selectedImage)?.title}
               </h3>
-              <p className="text-sm text-[#2563eb] mb-2">
-                {designIterations.find(d => d.id === selectedImage)?.date}
-              </p>
               <p className="text-gray-300">
                 {designIterations.find(d => d.id === selectedImage)?.description}
               </p>
@@ -329,4 +336,38 @@ export default function Design() {
       </section>
     </div>
   );
+}
+
+// Simple error boundary component
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  state: ErrorBoundaryState = { hasError: false };
+  
+  static getDerivedStateFromError(): ErrorBoundaryState {
+    return { hasError: true };
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex items-center justify-center h-full bg-[#252525]">
+          <div className="text-center p-6">
+            <h3 className="text-xl font-semibold mb-2">3D Model Unavailable</h3>
+            <p className="text-gray-400">
+              The 3D model could not be loaded. Please try again later.
+            </p>
+          </div>
+        </div>
+      );
+    }
+    
+    return this.props.children;
+  }
 } 

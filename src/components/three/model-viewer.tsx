@@ -5,13 +5,22 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 import { STLLoader } from 'three-stdlib';
 import * as THREE from "three";
+import getConfig from 'next/config';
 
 interface ModelProps {
   modelPath: string;
 }
 
 function Model({ modelPath }: ModelProps) {
-  const geometry = useLoader(STLLoader, modelPath);
+  // Get runtime config
+  const { publicRuntimeConfig } = getConfig();
+  
+  // Create a full path including the base path if it exists
+  const fullModelPath = publicRuntimeConfig?.basePath 
+    ? `${publicRuntimeConfig.basePath}${modelPath}`
+    : modelPath;
+    
+  const geometry = useLoader(STLLoader, fullModelPath);
   const model = useRef<THREE.Mesh>(null);
 
   useEffect(() => {

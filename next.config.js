@@ -12,6 +12,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Configure asset prefix for GitHub Pages
+  assetPrefix: '/L.I.S.A/',
+  // Add public runtime config for base path awareness in components
+  publicRuntimeConfig: {
+    basePath: '/L.I.S.A',
+  },
 };
 
 module.exports = nextConfig; 
