@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L.I.S.A. - Long-range Innovative Search Apparatus</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 2rem 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .hero h1 .highlight {
+      color: #2563eb;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+    section {
+      padding: 5rem 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .section-card {
+      background-color: #1a1a1a;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .section-card:hover {
+      transform: translateY(-5px);
+    }
+    .section-content {
+      padding: 1.5rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .section-description {
+      color: #aaa;
+      margin-bottom: 1.5rem;
+    }
+    .section-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .section-link:hover {
+      text-decoration: underline;
+    }
+    .section-dark {
+      background-color: #111;
+    }
+    footer {
+      background-color: #1a1a1a;
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">L.I.S.A.</div>
+      <div class="nav-links">
+        <a href="/L.I.S.A/" class="active">Home</a>
+        <a href="/L.I.S.A/overview/">Overview</a>
+        <a href="/L.I.S.A/hardware/">Hardware</a>
+        <a href="/L.I.S.A/software/">Software</a>
+        <a href="/L.I.S.A/design/">Design</a>
+        <a href="/L.I.S.A/team/">Team</a>
+        <a href="/L.I.S.A/resources/">Resources</a>
+        <a href="/L.I.S.A/contact/">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>A drone that literally <span class="highlight">reaches</span> farther.</h1>
+    <p>L.I.S.A. is a quadcopter whose 3-D-printed arms telescope in flight</p>
+    <a href="/L.I.S.A/overview/" class="btn-primary">Get Started</a>
+
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7"></path>
+      </svg>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="container">
+      <h2>Explore L.I.S.A.</h2>
+      <p>Learn about our drone design with telescoping arms for extended range and improved payload capacity.</p>
+      
+      <div class="sections">
+        <div class="section-card">
+          <div class="section-content">
+            <h3 class="section-title">Hardware</h3>
+            <p class="section-description">Explore the components and physical design elements that make L.I.S.A. possible.</p>
+            <a href="/L.I.S.A/hardware/" class="section-link">View Hardware Details →</a>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <div class="section-content">
+            <h3 class="section-title">Software</h3>
+            <p class="section-description">Discover the control systems and programming that power our telescopic drone.</p>
+            <a href="/L.I.S.A/software/" class="section-link">Explore Software →</a>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <div class="section-content">
+            <h3 class="section-title">Design Process</h3>
+            <p class="section-description">Follow our journey from concept sketches to final prototype with 3D models.</p>
+            <a href="/L.I.S.A/design/" class="section-link">See Design Evolution →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2023 L.I.S.A. Project | <a href="https://www.nyit.edu" style="color: white;">NYIT</a></p>
+    </div>
+  </footer>
+</body>
+</html> 

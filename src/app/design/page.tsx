@@ -6,8 +6,13 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import React from "react";
-import ModelViewer from "@/components/three/model-viewer";
+import dynamic from 'next/dynamic';
 import { resolvePath } from "@/utils/path-utils";
+
+// Load ModelViewer component dynamically with no server-side rendering
+const ThreeScene = dynamic(() => import('@/components/ThreeScene'), { 
+  ssr: false,
+});
 
 // IMPORTANT INSTRUCTIONS:
 // 1. Move these files from your Downloads folder to public/media in the project:
@@ -183,7 +188,7 @@ export default function Design() {
               <div className="h-[500px]">
                 {/* Use try/catch to handle potential errors */}
                 <ErrorBoundary>
-                  <ModelViewer modelPath={models[currentModel].path} />
+                  <ThreeScene modelPath={models[currentModel].path} />
                 </ErrorBoundary>
               </div>
               <div className="p-6">

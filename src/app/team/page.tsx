@@ -9,36 +9,38 @@ import { Card } from "@/components/ui/card";
 // Team member data
 const teamMembers = [
   {
+    
     id: 1,
+    name: "Leonardo Torres",
+    role: "Electronics & Power Systems",
+    bio: "Leonardo developed and tuned PIDs, designed the power system, and organized electronic components for efficient layout and testig.",
+    funFact: "Can solder components upside down while listening to death metal.",
+    image: "/media/leo.jpg",
+  },
+  {
+    id: 2,
     name: "Ishaan Singh",
     role: "Electrical & Software Designer",
     bio: "Ishaan spearheaded the electrical and software design of the telescopic arm system. He spent countless hours in the lab iterating on the design and testing different configurations.",
     funFact: "Once fixed a drone mid-flight by throwing a screwdriver to a teammate.",
-    image: "/media/team-alex.jpg",
+   image: "/media/leo.jpg",
   },
   {
-    id: 2,
-    name: "Leonardo Torres",
-    role: "Electronics & Power Systems",
-    bio: "Leonardo integrated the electronic components. He implemented the PID controllers. His expertise in circuit design was crucial for creating a reliable control system.",
-    funFact: "Can solder components upside down while listening to death metal.",
-    image: "/media/team-jamie.jpg",
-  },
-  {
+    
     id: 3,
-    name: "Andres Gene",
-    role: "Software & Control Systems",
-    bio: "Andres developed design for the arms that allow for stable flight with telescopic arms.",
-    funFact: "Debugged the presentation at 3 AM before the final presentation.",
-    image: "/media/team-marcus.jpg",
-  },
-  {
-    id: 4,
     name: "Sean Ein",
     role: "Structural Analysis & Testing",
     bio: "Sean conducted structural analysis and led the testing phase. His methodical approach to testing ensured that the final design met all performance requirements.",
     funFact: "Has a collection of drone parts from every project he's ever crashed.",
     image: "/media/team-sophia.jpg",
+  },
+  {
+    id: 4,
+    name: "Andres Gene",
+    role: "Software & Control Systems",
+    bio: "Andres developed design for the arms that allow for stable flight with telescopic arms.",
+    funFact: "Debugged the presentation at 3 AM before the final presentation.",
+    image: "/media/team-marcus.jpg",
   },
   {
     id: 5,

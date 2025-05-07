@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# Handle all routes with pushState
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 
