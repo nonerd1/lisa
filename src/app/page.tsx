@@ -28,7 +28,6 @@ export default function Home() {
                 muted
                 playsInline
                 className="w-full h-full object-cover scale-[1.8] blur-md"
-                poster="/media/team-alex.jpg"
               >
                 <source src="/media/homepage1_converted.mp4" type="video/mp4" />
               </video>
@@ -43,7 +42,6 @@ export default function Home() {
                   muted
                   playsInline
                   className="h-full w-full object-cover"
-                  poster="/media/team-alex.jpg"
                 >
                   <source src="/media/homepage1_converted.mp4" type="video/mp4" />
                 </video>

@@ -140,7 +140,7 @@ export default function Hardware() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Component Navigation */}
               <div className="lg:col-span-1">
-                <Card className="p-4 sticky top-24">
+                <div className="bg-[#252525] rounded-2xl border border-gray-800 p-4 sticky top-24">
                   <h3 className="text-xl font-semibold mb-4">Components</h3>
                   <ul className="space-y-2">
                     {hardwareComponents.map((component, index) => (
@@ -155,7 +155,7 @@ export default function Hardware() {
                           className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                             activeComponent === component.id
                               ? "bg-[#2563eb] text-white"
-                              : "hover:bg-[#252525] text-gray-300"
+                              : "hover:bg-[#333333] text-gray-300"
                           }`}
                         >
                           {component.name}
@@ -163,7 +163,7 @@ export default function Hardware() {
                       </motion.li>
                     ))}
                   </ul>
-                </Card>
+                </div>
               </div>
 
               {/* Component Details */}

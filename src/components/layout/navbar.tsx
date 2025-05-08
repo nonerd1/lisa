@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/overview", label: "Overview" },
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
+  { href: "/pids", label: "PIDs" },
   { href: "/design", label: "Design" },
   { href: "/team", label: "Team" },
   { href: "/resources", label: "Resources" },
