@@ -20,16 +20,35 @@ export default function Home() {
         {/* Video/Image Background */}
         <div className="absolute inset-0 z-0">
           <div className="relative w-full h-full">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-              poster="/media/team-alex.jpg"
-            >
-              <source src="/media/arms-extending.mp4" type="video/mp4" />
-            </video>
+            {/* Add a blurred background version of the video */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover scale-[1.8] blur-md"
+                poster="/media/team-alex.jpg"
+              >
+                <source src="/media/homepage1_converted.mp4" type="video/mp4" />
+              </video>
+            </div>
+            
+            {/* Main centered video */}
+            <div className="absolute inset-0 z-1 flex items-center justify-center">
+              <div className="h-full aspect-[9/16] max-h-screen">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                  poster="/media/team-alex.jpg"
+                >
+                  <source src="/media/homepage1_converted.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
             <div className="absolute inset-0 bg-black/50 z-10"></div>
           </div>
         </div>

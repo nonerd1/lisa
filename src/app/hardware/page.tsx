@@ -104,7 +104,7 @@ const hardwareComponents = [
       "50C discharge rate",
       "240g weight",
     ],
-    image: "/media/battery.jpg",
+    image: "/media/battery.jpeg",
   },
 ];
 
@@ -230,7 +230,7 @@ export default function Hardware() {
           </p>
           <div className="flex justify-center">
             <Image
-              src="/media/system-diagram.jpg"
+              src="/media/sysint.jpg"
               alt="System Integration Diagram"
               width={800}
               height={450}

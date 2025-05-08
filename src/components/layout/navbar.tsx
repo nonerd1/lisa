@@ -54,7 +54,8 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`transition-colors ${
-                pathname === link.href
+                (link.href === "/" && pathname === "/") || 
+                (link.href !== "/" && pathname.startsWith(link.href))
                   ? "text-[#2563eb] font-medium"
                   : "text-white hover:text-[#2563eb]"
               }`}
@@ -93,7 +94,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`transition-colors ${
-                    pathname === link.href
+                    (link.href === "/" && pathname === "/") || 
+                    (link.href !== "/" && pathname.startsWith(link.href))
                       ? "text-[#2563eb] font-medium"
                       : "text-white hover:text-[#2563eb]"
                   }`}
