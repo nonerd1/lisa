@@ -247,15 +247,15 @@ export default function Contact() {
             <Card className="p-6 bg-[#252525] rounded-xl">
               <h3 className="text-xl font-semibold mb-2">Is the L.I.S.A. project open source?</h3>
               <p className="text-gray-300">
-                Yes, all our design files, firmware, and documentation are available under the MIT License.
-                You can find everything on our GitHub repositories and resource page.
+                Yes, all our design files, firmware, and documentation are available under the NYIT License.
+                You can contact us for the files.
               </p>
             </Card>
             
             <Card className="p-6 bg-[#252525] rounded-xl">
               <h3 className="text-xl font-semibold mb-2">Can I use your designs for commercial purposes?</h3>
               <p className="text-gray-300">
-                Yes, the MIT License allows for commercial use. However, we appreciate attribution and 
+                Yes, the NYIT License allows for commercial use. However, we appreciate attribution and 
                 would love to hear about your applications!
               </p>
             </Card>
@@ -263,7 +263,7 @@ export default function Contact() {
             <Card className="p-6 bg-[#252525] rounded-xl">
               <h3 className="text-xl font-semibold mb-2">How long does it take to 3D print the arm components?</h3>
               <p className="text-gray-300">
-                With standard settings (0.2mm layer height, 15% infill), each arm takes approximately 8-10 hours to print.
+                With standard settings (0.2mm layer height, 15% infill), each arm set takes approximately 8-10 hours to print.
                 We recommend using PETG or ABS filament for better durability.
               </p>
             </Card>

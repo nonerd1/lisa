@@ -33,6 +33,17 @@ export default function ProjectStory() {
 
             <div className="relative pl-8 border-l-2 border-[#2563eb]">
               <h3 className="text-2xl font-semibold mb-2 text-white">
+                Why We Are Doing This
+              </h3>
+              <p className="mb-4">
+                We saw an issue with rescuers being unable to reach people or places in narrow caves or collapsed buildings after a natural disaster. 
+                We realized that while there is already a big market for drones, there are none designed specifically for changing sizes. 
+                A drone that could contract to navigate tight spaces and then expand to improve stability would fill a critical gap in search and rescue operations.
+              </p>
+            </div>
+
+            <div className="relative pl-8 border-l-2 border-[#2563eb]">
+              <h3 className="text-2xl font-semibold mb-2 text-white">
                 The Design Process
               </h3>
               <p className="mb-4">

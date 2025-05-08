@@ -37,6 +37,102 @@ graph TD
 // Code snippets
 const codeSnippets = [
   {
+    title: "Python Script",
+    code: `
+from dronekit import connect, VehicleMode
+import time
+
+# Connect to the Pixhawk
+print("Connecting to vehicle...")
+vehicle = connect('/dev/ttyUSB0', baud=57600, wait_ready=False)
+
+# Wait for initialization
+print("Waiting for basic readiness...")
+vehicle.wait_ready('attitude', 'mode', 'armed', 'system_status')
+
+# Set to ALTCTL mode
+print("Setting mode to ALTCTL...")
+vehicle.mode = VehicleMode("ALTCTL")
+while vehicle.mode.name != "ALTCTL":
+    print(" Waiting for ALTCTL mode...")
+    time.sleep(1)
+
+# Arm motors
+print("Arming...")
+vehicle.armed = True
+while not vehicle.armed:
+    print(" Waiting for arming...")
+    time.sleep(1)
+
+# ==== SET INDIVIDUAL MOTOR PWMs HERE ====
+# These correspond to SERVO1 to SERVO4 (motor 1–4)
+# You need to determine which motor is which (e.g. CW vs CCW) by testing
+motor_1_pwm = 1500
+motor_2_pwm = 1500
+motor_3_pwm = 1500
+motor_4_pwm = 1500
+# Try increasing one or more by 10–20 to counteract yaw
+# e.g., motor_1_pwm = 1520
+
+# Set motor outputs via RC override
+print("Applying motor PWMs...")
+vehicle.channels.overrides = {
+    '1': motor_1_pwm,  # Motor 1
+    '2': motor_2_pwm,  # Motor 2
+    '3': motor_3_pwm,  # Motor 3 (also used for throttle traditionally)
+    '4': motor_4_pwm   # Motor 4
+}
+print(f"Motor PWMs set: M1={motor_1_pwm}, M2={motor_2_pwm}, M3={motor_3_pwm}, M4={motor_4_pwm}")
+
+# Hover for a bit
+hover_time = 10
+print("Hovering...")
+start = time.time()
+while time.time() - start < hover_time:
+    try:
+        alt = vehicle.location.local_frame.down
+        print(f"Estimated Altitude: {-alt:.2f} m")
+    except:
+        print(" Altitude unavailable")
+    time.sleep(0.5)
+
+# Ramp down motors
+print("Ramping down...")
+for pwm in range(1500, 1200, -25):
+    vehicle.channels.overrides['1'] = pwm
+    vehicle.channels.overrides['2'] = pwm
+    vehicle.channels.overrides['3'] = pwm
+    vehicle.channels.overrides['4'] = pwm
+    print(f"Throttle PWM: {pwm}")
+    time.sleep(0.5)
+
+# Stop motors
+print("Cutting throttle...")
+vehicle.channels.overrides = {
+    '1': 1000,
+    '2': 1000,
+    '3': 1000,
+    '4': 1000
+}
+time.sleep(2)
+
+# Clear overrides and land
+vehicle.channels.overrides = {}
+print("Switching to LAND mode...")
+vehicle.mode = VehicleMode("LAND")
+while vehicle.mode.name != "LAND":
+    print(" Waiting for LAND mode...")
+    time.sleep(1)
+
+# Wait for disarm
+while vehicle.armed:
+    print("Waiting for disarm...")
+    time.sleep(1)
+
+print("Landed and disarmed.")
+vehicle.close()`,
+  },
+  {
     title: "Bluetooth Initialization",
     code: `
 // Initialize the CC256x Bluetooth module
@@ -210,7 +306,7 @@ export default function Software() {
                   <h3 className="text-2xl font-semibold mb-4">{snippet.title}</h3>
                   <Card className="bg-[#1e1e1e] rounded-xl overflow-hidden">
                     <div className="p-6">
-                      <CodeBlock code={snippet.code} language="c" />
+                      <CodeBlock code={snippet.code} language={snippet.title === "Python Script" ? "python" : "c"} />
                     </div>
                   </Card>
                 </motion.div>
@@ -220,34 +316,40 @@ export default function Software() {
         </div>
       </section>
 
-      {/* PID Tuning Section */}
+      {/* Python Libraries Section */}
       <section className="py-16 bg-[#1e1e1e]">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">PID Tuning Results</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            After migrating to the Pixhawk, extensive PID tuning was performed to achieve
-            optimal flight performance with both retracted and extended arms.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {Object.entries(pidGains).map(([axis, gains]) => (
-              <Card key={axis} className="p-6 bg-[#252525] rounded-2xl">
-                <h3 className="text-xl font-semibold mb-4 capitalize">{axis} Axis</h3>
-                <div className="space-y-2">
-                  {Object.entries(gains).map(([param, value]) => (
-                    <div key={param} className="flex justify-between items-center">
-                      <span className="text-gray-300">K{param}:</span>
-                      <span className="font-mono text-[#2563eb] font-semibold">{value}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
-          <div className="mt-12">
-            <p className="text-gray-300 italic mb-8">
-              "Finding the right PID values for the extended arm configuration required careful
-              attention to the changed dynamics and moment of inertia."
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Python Libraries & Tools</h2>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 text-center">
+              Our system leverages several Python libraries to manage flight control and communication with the Pixhawk.
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="p-6 bg-[#252525] rounded-xl">
+                <h3 className="text-xl font-semibold mb-3">DroneKit-Python</h3>
+                <p className="text-gray-300">
+                  Provides a powerful Python API for controlling and monitoring drones via MAVLink. We use it to interact with our Pixhawk flight controller, set flight modes, and monitor vehicle state.
+                </p>
+              </Card>
+              <Card className="p-6 bg-[#252525] rounded-xl">
+                <h3 className="text-xl font-semibold mb-3">PyMAVLink</h3>
+                <p className="text-gray-300">
+                  Low-level implementation of the MAVLink protocol for Python, allowing precise control over message formatting and parameter access when needed beyond DroneKit's capabilities.
+                </p>
+              </Card>
+              <Card className="p-6 bg-[#252525] rounded-xl">
+                <h3 className="text-xl font-semibold mb-3">PyBluez</h3>
+                <p className="text-gray-300">
+                  Python extension module providing access to system Bluetooth resources. We use this to interface with our custom smartphone app for real-time arm control commands.
+                </p>
+              </Card>
+              <Card className="p-6 bg-[#252525] rounded-xl">
+                <h3 className="text-xl font-semibold mb-3">Telemetry Dashboard</h3>
+                <p className="text-gray-300">
+                  Custom web-based dashboard built with Flask and WebSockets to monitor drone telemetry data in real-time, including arm position, flight attitude, and battery status.
+                </p>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -255,12 +357,12 @@ export default function Software() {
       {/* Next Steps */}
       <section className="py-16 bg-[#1a1a1a]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Explore the Design Process</h2>
+          <h2 className="text-3xl font-bold mb-6">Learn About the PID Tuning Process</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            See how we designed and iteratively improved the telescopic arm mechanism.
+            Our PID controllers were carefully tuned to handle the dynamic changes when arms are extended or retracted.
           </p>
-          <a href="/design" className="btn-primary">
-            View Design Gallery
+          <a href="/pids" className="btn-primary">
+            Explore PID Tuning
           </a>
         </div>
       </section>

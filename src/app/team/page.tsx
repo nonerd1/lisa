@@ -157,20 +157,16 @@ export default function Team() {
             </p>
             <ul className="space-y-4 text-left">
               <li className="bg-[#252525] p-4 rounded-lg">
-                <span className="font-semibold">Department of Mechanical Engineering</span> - 
+                <span className="font-semibold">Entrepreneurship and Technology Innovation Center (ETIC)</span> - 
                 For providing lab space and equipment for testing.
               </li>
               <li className="bg-[#252525] p-4 rounded-lg">
-                <span className="font-semibold">Advanced Materials Lab</span> - 
+                <span className="font-semibold">NYIT Manhattan Library</span> - 
                 For assistance with 3D printing specialized components.
               </li>
               <li className="bg-[#252525] p-4 rounded-lg">
-                <span className="font-semibold">Dr. Robert Chen</span> - 
+                <span className="font-semibold">Dr. Ziqian (Cecilia) Dong</span> - 
                 For technical guidance on control systems.
-              </li>
-              <li className="bg-[#252525] p-4 rounded-lg">
-                <span className="font-semibold">Industry Partner: AeroDynamics Inc.</span> - 
-                For providing components and technical advice.
               </li>
             </ul>
           </div>

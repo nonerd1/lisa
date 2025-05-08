@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 // Define the specs data
 const specs = [
@@ -80,8 +81,26 @@ export default function Overview() {
         </div>
       </div>
 
+      {/* Hero Image Section */}
+      <div className="relative w-full h-[500px] overflow-hidden">
+        <Image 
+          src="/media/over.jpeg" 
+          alt="L.I.S.A. drone with extended arms" 
+          fill 
+          className="object-cover"
+          priority 
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1e1e1e] flex items-end">
+          <div className="container mx-auto px-4 pb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
+              Adaptable Flight Dynamics Through Telescopic Technology
+            </h2>
+          </div>
+        </div>
+      </div>
+
       {/* Specs Section */}
-      <section className="py-16 bg-[#1e1e1e]">
+      <section className="py-16 bg-gradient-to-b from-[#1e1e1e] to-[#222222]">
         <div className="container mx-auto px-4">
           <motion.div
             ref={specsRef}
@@ -113,7 +132,7 @@ export default function Overview() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-16 bg-[#222222]">
+      <section className="py-16 bg-gradient-to-b from-[#222222] to-[#1a1a1a]">
         <div className="container mx-auto px-4">
           <motion.div
             ref={timelineRef}
@@ -149,7 +168,7 @@ export default function Overview() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-[#1a1a1a]">
+      <section className="py-16 bg-gradient-to-t from-[#1a1a1a] to-[#222222]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Want to learn more?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">

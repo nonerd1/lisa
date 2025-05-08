@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -111,7 +111,15 @@ const hardwareComponents = [
 export default function Hardware() {
   const [activeComponent, setActiveComponent] = useState(hardwareComponents[0].id);
   const componentsRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isComponentsInView = useInView(componentsRef, { once: true, amount: 0.1 });
+
+  useEffect(() => {
+    // Set video playback rate when component mounts
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 4.0;
+    }
+  }, []);
 
   return (
     <div className="pt-24 pb-20">
@@ -229,13 +237,17 @@ export default function Hardware() {
             controlled during flight without affecting stability.
           </p>
           <div className="flex justify-center">
-            <Image
-              src="/media/sysint.jpg"
-              alt="System Integration Diagram"
-              width={800}
-              height={450}
-              className="rounded-xl shadow-lg"
-            />
+            <div className="w-full max-w-[800px] rounded-xl shadow-lg overflow-hidden">
+              <video
+                ref={videoRef}
+                src="/media/act1.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto"
+              />
+            </div>
           </div>
           <p className="mt-8 text-gray-400 italic">
             "The most challenging part was ensuring stable power delivery across different operational modes."
