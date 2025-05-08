@@ -146,6 +146,21 @@ export default function PIDs() {
                 </ul>
               </div>
               
+              <div className="my-10 relative">
+                <div className="relative w-full rounded-xl overflow-hidden shadow-lg">
+                  <Image
+                    src="/media/pidgraph.jpg"
+                    alt="PID Controller Response Graph"
+                    width={1000}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <p className="mt-3 text-sm text-center text-gray-400 italic">
+                  PID controller response: The graph shows how different configurations affect system stability and response time.
+                </p>
+              </div>
+              
               <p>
                 For our L.I.S.A. drone with telescopic arms, PIDs are even more critical. When the arms extend or retract, the drone's center of gravity and moment of inertia change dramatically. Our PIDs must dynamically adapt to these changes to maintain stable flight.
               </p>
