@@ -18,10 +18,10 @@ export default function Contact() {
     e.preventDefault();
     setFormStatus("submitting");
 
-    // Simulate form submission
     try {
-      // In a real application, you would send the form data to your backend or a form service
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // The form will be handled by Netlify automatically
+      // This is just to control the UI state
+      await new Promise(resolve => setTimeout(resolve, 1000));
       setFormStatus("success");
     } catch (error) {
       setFormStatus("error");
@@ -72,7 +72,15 @@ export default function Contact() {
                       </button>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form 
+                      onSubmit={handleSubmit} 
+                      className="space-y-6"
+                      data-netlify="true"
+                      name="contact"
+                      method="POST"
+                    >
+                      <input type="hidden" name="form-name" value="contact" />
+                      
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">
                           Name
@@ -82,7 +90,7 @@ export default function Contact() {
                           id="name"
                           name="name"
                           required
-                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors"
+                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors text-white"
                           placeholder="Your name"
                         />
                       </div>
@@ -96,7 +104,7 @@ export default function Contact() {
                           id="email"
                           name="email"
                           required
-                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors"
+                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors text-white"
                           placeholder="your.email@example.com"
                         />
                       </div>
@@ -110,7 +118,7 @@ export default function Contact() {
                           id="subject"
                           name="subject"
                           required
-                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors"
+                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors text-white"
                           placeholder="What's this about?"
                         />
                       </div>
@@ -124,7 +132,7 @@ export default function Contact() {
                           name="message"
                           rows={5}
                           required
-                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors"
+                          className="w-full px-4 py-3 rounded-lg bg-[#1e1e1e] border border-gray-700 focus:border-[#2563eb] focus:outline-none focus:ring-1 focus:ring-[#2563eb] transition-colors text-white"
                           placeholder="Your message..."
                         ></textarea>
                       </div>
@@ -189,8 +197,8 @@ export default function Contact() {
                       <div>
                         <h3 className="text-lg font-medium">Email</h3>
                         <p className="text-gray-300">
-                          <a href="mailto:contact@lisa-drone.com" className="hover:text-[#2563eb] transition-colors">
-                            contact@lisa-drone.com
+                          <a href="mailto:ishvish001@gmail.com" className="hover:text-[#2563eb] transition-colors">
+                            ishvish001@gmail.com
                           </a>
                         </p>
                       </div>
@@ -206,20 +214,6 @@ export default function Contact() {
                           NYIT<br />
                           1855 Broadway<br />
                           New York, NY 10018
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#2563eb]/10 flex items-center justify-center mr-4">
-                        <Phone className="h-5 w-5 text-[#2563eb]" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium">Phone</h3>
-                        <p className="text-gray-300">
-                          <a href="tel:+14155552671" className="hover:text-[#2563eb] transition-colors">
-                            +1 (415) 555-2671
-                          </a>
                         </p>
                       </div>
                     </div>

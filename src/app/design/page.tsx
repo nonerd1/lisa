@@ -46,7 +46,7 @@ const designIterations = [
     id: 1,
     title: "Initial Concept Sketch",
     description: "First conceptual drawing of telescopic mechanism. The idea was to use a rack and pinion system initially.",
-    image: "/media/design-sketch.jpg",
+    image: "/media/isktch.png",
     date: "September 2022",
   },
   {
@@ -88,7 +88,7 @@ const designIterations = [
     id: 7,
     title: "Motor Mount Design",
     description: "Redesigned motor mount to integrate with telescopic arm. Improved weight distribution.",
-    image: "/media/placeholder-image.svg",
+    image: "/media/motormount.png",
     date: "February 2023",
   },
   {
@@ -102,7 +102,7 @@ const designIterations = [
     id: 9,
     title: "Integration Testing",
     description: "Testing the fully integrated arm with electronics. Some issues with wire routing were identified and fixed.",
-    image: "/media/design-integration.jpg",
+    image: "/media/integ.jpeg",
     date: "April 2023",
   },
 ];

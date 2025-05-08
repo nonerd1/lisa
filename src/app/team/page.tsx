@@ -180,12 +180,12 @@ export default function Team() {
       {/* Next Steps */}
       <section className="py-16 bg-[#1a1a1a]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Download Project Resources</h2>
+          <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Access our design files, firmware, and project documentation.
+            Interested in our project? Have questions about our approach?
           </p>
-          <a href="/resources" className="btn-primary">
-            View Resources
+          <a href="/contact" className="btn-primary">
+            Get in Touch
           </a>
         </div>
       </section>

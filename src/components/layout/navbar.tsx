@@ -14,7 +14,6 @@ const navLinks = [
   { href: "/pids", label: "PIDs" },
   { href: "/design", label: "Design" },
   { href: "/team", label: "Team" },
-  { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
 ];
 
