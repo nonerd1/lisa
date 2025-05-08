@@ -23,16 +23,16 @@ const teamMembers = [
     role: "Electrical & Software Designer",
     bio: "Ishaan spearheaded the electrical and software design of the telescopic arm system. He spent countless hours in the lab iterating on the design and testing different configurations.",
     funFact: "Once fixed a drone mid-flight by throwing a screwdriver to a teammate.",
-   image: "/media/leo.jpg",
+   image: "/media/ishaan.jpeg",
   },
   {
     
     id: 3,
     name: "Sean Ein",
     role: "Structural Analysis & Testing",
-    bio: "Sean conducted structural analysis and led the testing phase. His methodical approach to testing ensured that the final design met all performance requirements.",
+    bio: "Sean wrote out various Python scripts to send to the drone to communicate via telemetry radio. His methodical approach to testing ensured that the final design met all performance requirements.",
     funFact: "Has a collection of drone parts from every project he's ever crashed.",
-    image: "/media/team-sophia.jpg",
+    image: "/media/sean.jpg",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const teamMembers = [
     role: "Software & Control Systems",
     bio: "Andres developed design for the arms that allow for stable flight with telescopic arms.",
     funFact: "Debugged the presentation at 3 AM before the final presentation.",
-    image: "/media/team-marcus.jpg",
+    image: "/media/andres.jpg",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const teamMembers = [
     role: "Faculty Advisor",
     bio: "Dr. Dong provided guidance and expertise throughout the project. Her background in aerospace engineering and control systems helped the team overcome numerous challenges.",
     funFact: "Once worked on Motorized walker to improve gaits for patients with Parkinson's Disease.",
-    image: "/media/team-elizabeth.jpg",
+    image: "/media/dong.jpeg",
   },
 ];
 
