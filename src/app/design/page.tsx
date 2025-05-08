@@ -130,7 +130,7 @@ export default function Design() {
   // Model data for the two STL files
   const models: ModelsType = {
     "motor-mount": {
-      path: "/models/Motor_Mount_Design.stl",
+      path: "/media/ArmBody.stl",
       title: "Motor Mount Design",
       description: "This is the 3D model of our motor mount design. The mount was designed to integrate seamlessly with the telescopic arm system while providing stable support for the motors."
     },
